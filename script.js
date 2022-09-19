@@ -1,9 +1,9 @@
 const nombre = document.querySelector(".nombre");
 const telefono = document.querySelector(".telefono");
 const direccion = document.querySelector(".direccion");
-const agregar = document.querySelector(".agregar");
-
+const agregar = document.querySelector(".btnAgregar");
 const listado = document.querySelector(".list");
+const borrar = document.querySelector(".borar");
 
 const dataBase = window.localStorage
 
@@ -13,16 +13,17 @@ const guardar = (dataBase, contacto) => {
 }
 
 const cargar = (dataBase, parentNode) => {
-    let claves = Object.keys(dataBase)
-        let clave
+    let claves = Object.keys(dataBase);
+        let clave;
+        let crear;
         for (clave of claves){
          contacto = JSON.parse(dataBase.getItem(clave));
-        crear(parentNode, contacto, dataBase);
+         crear = (parentNode, contacto, dataBase);
 
-    }
+        }
 
 }
-const creando = (parentNode, contacto, dataBase) => {
+const creando = (parentNode, contacto) => {
     let divContacto = document.createElement('div')
     let nombreContacto = document.createElemen('p');
     let telefonoContacto = document.createElement('p');
@@ -36,14 +37,12 @@ const creando = (parentNode, contacto, dataBase) => {
 
     divContacto.appendChild(nombreContacto);
     divContacto.appendChild(telefonoContacto);
-    divContacto.appendChild(direccionContacto
+    divContacto.appendChild(direccionContacto);
         
-        parentNode.appendChild(divContacto))
+    parentNode.appendChild(divContacto);
 }
 
-
-
-    btnAgregar.onclick = () => {
+agregar.onclick = () => {
     let contacto = {
         id: Math.random(1,100),
         nombre: nombre.value,
@@ -54,5 +53,16 @@ const creando = (parentNode, contacto, dataBase) => {
     guardar (dataBase, contacto)
 }
 
-cargar (dataBase, listado)
+cargar (dataBase, listado);
+
+borrar.onclick = () => {
+    borrar = {
+        nombre: nombre.value,
+        telefono: telefono.value,
+        direccion: direccion.value,
+    }
+    
+    
+}
+
 
